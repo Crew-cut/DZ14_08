@@ -1,11 +1,14 @@
 import jdk.internal.util.ArraysSupport;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Класс расширяет возможности стандартного класса Array, и позволяет добавлять объекты в любое место массива,
  * расширять его размеры и удалять элементы из массива, выделять под массивы.
  */
-public class NewArrayList <E> {
+public class NewArrayList <E> implements NewList <E>, Iterator <E>{
     /**
      * Пустой массив
      */
@@ -14,10 +17,7 @@ public class NewArrayList <E> {
      * Стандартный размер массива
      */
     private static final int DEFAULT_CAPACITY = 10;
-    /**
-     * Стандартный пустой массив
-     */
-    private static final Object[] DEFAULT_EMPTY_OBJECTS = {};
+
     /**
      * Инстанс класса хранящий данные массива
      */
@@ -47,7 +47,7 @@ public class NewArrayList <E> {
      */
 
     public NewArrayList() {
-        this.objects = DEFAULT_EMPTY_OBJECTS;
+       this.objects = new Object[0];
     }
 
     /**
@@ -154,15 +154,31 @@ public class NewArrayList <E> {
 
     /**
      * Метод записывает новое значение в массив по его индексу
-     * @param i индекс
-     * @param e элемент
+     *
+     * @param index индекс массива
+     * @param e     элемент массива
      * @return Элемент массива
      */
-    public E set (int i, int e){
-        if(i < 0 || i > size) throw new IndexOutOfBoundsException ();
-        E oldValue = (E) objects [i];
-        objects[i] = e;
+    public E set(int index, int e){
+        if(index < 0 || index > size) throw new IndexOutOfBoundsException ();
+        E oldValue = (E) objects [index];
+        objects[index] = e;
         return oldValue;
     }
 
+    @NotNull
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
+
+    @Override
+    public boolean hasNext() {
+        return false;
+    }
+
+    @Override
+    public E next() {
+        return null;
+    }
 }
