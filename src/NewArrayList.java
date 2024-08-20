@@ -159,7 +159,7 @@ public class NewArrayList <E> implements NewList <E>, Iterator <E>{
      * @param e     элемент массива
      * @return Элемент массива
      */
-    public E set(int index, int e){
+    public E set(int index, E e){
         if(index < 0 || index > size) throw new IndexOutOfBoundsException ();
         E oldValue = (E) objects [index];
         objects[index] = e;

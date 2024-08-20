@@ -3,5 +3,5 @@ public interface NewList <E> extends Iterable <E>{
     void remove (int index);
     E get (int index);
     int size();
-    E set (int index, int e);
+    E set (int index, E e);
 }
