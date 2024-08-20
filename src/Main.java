@@ -8,6 +8,7 @@ public class Main {
         ints.add(0,2);
         ints.add(5);
         ints.remove(0);
+        ints.trimToSize();
         System.out.println("elem = "+ints);
     }
 }

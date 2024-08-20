@@ -61,18 +61,17 @@ public class NewArrayList <E> {
     public int size (){
         return size;
     }
-    public boolean trimToSize (Object [] o){
-
-        return true;
-    }
 
     /**
-     * Метод выдает элемент массива по его индексу
-     * @param i индекс массива
-     * @return элемент массива
+     * Уменьшает массив до размера хранимых в нем нулевых элементов.
+     * Метод нужен для уменьшения занимаемой массивом памяти.
      */
-    public E get (int i) {
-        return (E) objects[i];
+    public void trimToSize(){
+        if (size < objects.length){
+            objects = (size == 0)
+                    ? EMPTY_OBJECTS
+                    : Arrays.copyOf(objects, size);
+        }
     }
 
     /**
@@ -146,4 +145,28 @@ public class NewArrayList <E> {
         }
         object [size=newSize] = null;
     }
+    /**
+     * Метод выдает элемент массива по его индексу
+     * @param i индекс массива
+     * @return элемент массива
+     * @throws IndexOutOfBoundsException
+     */
+    public E get (int i) {
+        if(i < 0 || i > size) throw new IndexOutOfBoundsException ();
+        return (E) objects[i];
+    }
+
+    /**
+     * Метод записывает новое значение в массив по его индексу
+     * @param i индекс
+     * @param e элемент
+     * @return Элемент массива
+     */
+    public E set (int i, int e){
+        if(i < 0 || i > size) throw new IndexOutOfBoundsException ();
+        E oldValue = (E) objects [i];
+        objects[i] = e;
+        return oldValue;
+    }
+
 }
