@@ -1,8 +1,4 @@
 import jdk.internal.util.ArraysSupport;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Range;
-
 import java.util.Arrays;
 
 /**
@@ -25,7 +21,7 @@ public class NewArrayList <E> {
     /**
      * Инстанс класса хранящий данные массива
      */
-    private Object [] objects;
+    transient Object [] objects;
     /**
      * Размер массива
      */
@@ -49,7 +45,7 @@ public class NewArrayList <E> {
     /**
      * Конструктор для создания объекта класса без параметров (DEFAULT)
      */
-    @Contract(pure = true)
+
     public NewArrayList() {
         this.objects = DEFAULT_EMPTY_OBJECTS;
     }
